@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="460.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UIController">
+   <children>
+      <SplitPane dividerPositions="0.5" prefHeight="500.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <SplitPane dividerPositions="0.75" layoutX="178.0" layoutY="28.0" orientation="VERTICAL" prefHeight="498.0" prefWidth="396.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <TableView fx:id="tableGroups" onMouseReleased="#mouseReleasedShowStudents" prefHeight="245.0" prefWidth="396.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="0.0">
+                                <columns>
+                                  <TableColumn fx:id="colGroups" onEditCommit="#OnEditCommitGroupName" prefWidth="395.0" text="Groups" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="141.0" prefWidth="394.0">
+                           <children>
+                              <VBox layoutX="147.0" layoutY="-78.0" prefHeight="94.0" prefWidth="394.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="25.0">
+                                       <children>
+                                          <DatePicker fx:id="dateFrom" editable="false" promptText="Date From...." />
+                                          <DatePicker fx:id="dateTo" editable="false" promptText="Date To..." />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="buttonAttendance" mnemonicParsing="false" onAction="#buttonPressedAttendance" text="Attendance" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children></AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <SplitPane dividerPositions="0.1" orientation="VERTICAL" prefHeight="498.0" prefWidth="396.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="43.0" prefWidth="396.0" spacing="30.0">
+                                       <children>
+                                          <DatePicker fx:id="datePick" editable="false" onHidden="#onHiddenSetAbsentCheckBoxes" promptText="Date" />
+                                          <Button fx:id="buttonSave" mnemonicParsing="false" onAction="#buttonPressedSave" text="Save" />
+                                       </children>
+                                    </HBox>
+                                    <Separator prefHeight="3.0" prefWidth="396.0" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <TableView fx:id="tableStudents" prefHeight="445.0" prefWidth="396.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columns>
+                                    <TableColumn fx:id="colStudentId" onEditCommit="#OnEditCommitStudentId" prefWidth="75.0" text="Student ID" />
+                                  <TableColumn fx:id="colFirstName" onEditCommit="#OnEditCommitFirstName" prefWidth="199.0" text="First name" />
+                                  <TableColumn fx:id="colLastName" onEditCommit="#OnEditCommitLastName" prefWidth="139.0" text="Last name" />
+                                    <TableColumn fx:id="colAbsent" prefWidth="132.0" text="Absent" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <MenuBar prefHeight="25.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem fx:id="menuImport" mnemonicParsing="false" onAction="#menuPressedImport" text="Import..." />
+                  <MenuItem fx:id="menuExport" mnemonicParsing="false" onAction="#menuPressedExport" text="Export..." />
+              <MenuItem fx:id="menuClose" mnemonicParsing="false" onAction="#menuPressedClose" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+                  <CheckMenuItem fx:id="menuTurnOnEditing" mnemonicParsing="false" onAction="#menuPressedTurnOnEditing" text="Turn on editing" />
+                  <Menu mnemonicParsing="false" text="Add">
+                    <items>
+                      <MenuItem fx:id="menuAddGroup" mnemonicParsing="false" onAction="#menuPressedAddGroup" text="Group..." />
+                        <MenuItem fx:id="menuAddStudent" mnemonicParsing="false" onAction="#menuPressedAddstudent" text="Student..." />
+                    </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Remove">
+                    <items>
+                      <MenuItem fx:id="menuRemoveGroup" mnemonicParsing="false" onAction="#menuPressedRemoveGroup" text="Group" />
+                    <MenuItem fx:id="menuRemoveStudent" mnemonicParsing="false" onAction="#menuPressedRemoveStudent" text="Student" />
+                    </items>
+                  </Menu>
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem fx:id="menuAbout" mnemonicParsing="false" onAction="#menuPressedAbout" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>
